@@ -4,6 +4,7 @@
  * @time 2021-10-16
  */
 #include<cstdio>
+#include<cstdlib>
 #include"graphic/console_text.h"
 
 int main()
@@ -13,5 +14,6 @@ int main()
     {
         console_printf(index | BACKGROUND_GREEN, "A\nA\nA\n");
     }
+    console_puts(0x51, "Test.\n");
     return 0;
 }
