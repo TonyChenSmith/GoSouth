@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 14)
 
 # Set project directories
-set(GS_ROOT_DIR "${CMAKE_SOURCE_DIR}/GoSouth/GoSouth")
+set(GS_ROOT_DIR "${CMAKE_SOURCE_DIR}/GoSouth")
 set(GS_SOURCE_DIR "${GS_ROOT_DIR}/")
 set(GS_INCLUDE_DIR "${GS_ROOT_DIR}/include")
 
