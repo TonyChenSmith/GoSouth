@@ -16,7 +16,7 @@ static HANDLE CONSOLE_STDOUT = NULL;
 static HANDLE CONSOLE_STDERR = NULL;
 
 //原本颜色。
-static WORD ORIGIN_COLORS = FORE_WHITE | BACK_BLACK;
+static WORD ORIGIN_COLORS = FOREGROUND_WHITE | BACKGROUND_BLACK;
 
 //获得当前输出颜色组合。
 static WORD __mirror_get_text_color(bool is_err)
@@ -25,7 +25,7 @@ static WORD __mirror_get_text_color(bool is_err)
 	if (!GetConsoleScreenBufferInfo(is_err?CONSOLE_STDERR:CONSOLE_STDOUT, &info))
 	{
 		//错误信息。
-		return FORE_WHITE | BACK_BLACK;
+		return FOREGROUND_WHITE | BACKGROUND_BLACK;
 	}
 	return info.wAttributes;
 }

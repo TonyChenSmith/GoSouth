@@ -94,15 +94,6 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
-<<<<<<< Updated upstream
-=======
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <FloatingPointExceptions>true</FloatingPointExceptions>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <AssemblerOutput>All</AssemblerOutput>
-      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
->>>>>>> Stashed changes
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,15 +110,6 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
-<<<<<<< Updated upstream
-=======
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <FloatingPointExceptions>true</FloatingPointExceptions>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <AssemblerOutput>All</AssemblerOutput>
-      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
->>>>>>> Stashed changes
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,15 +126,6 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
-<<<<<<< Updated upstream
-=======
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <FloatingPointExceptions>true</FloatingPointExceptions>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <AssemblerOutput>All</AssemblerOutput>
-      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
->>>>>>> Stashed changes
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,15 +142,6 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
-<<<<<<< Updated upstream
-=======
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <FloatingPointExceptions>true</FloatingPointExceptions>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <AssemblerOutput>All</AssemblerOutput>
-      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
->>>>>>> Stashed changes
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
