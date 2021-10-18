@@ -1,7 +1,7 @@
-/*
- * ±¾ÎÄ¼şÊÇ¶ÔÍ·ÎÄ¼şgraphic/console_text.hµÄÊµÏÖ¡£
+ï»¿/*
+ * æœ¬æ–‡ä»¶æ˜¯å¯¹å¤´æ–‡ä»¶graphic/console_text.hçš„å®ç°ã€‚
  * 
- * @author º£ÖĞ´¹µö
+ * @author æµ·ä¸­å‚é’“
  * @time 2021-10-16
  */
 #include<windows.h>
@@ -9,28 +9,28 @@
 #include<cstdarg>
 #include"graphic/console_text.h"
 
-//¿ØÖÆÌ¨±ê×¼Êä³ö¾ä±ú¡£
+//æ§åˆ¶å°æ ‡å‡†è¾“å‡ºå¥æŸ„ã€‚
 static HANDLE CONSOLE_STDOUT = NULL;
 
-//¿ØÖÆÌ¨±ê×¼´íÎóÊä³ö¾ä±ú¡£
+//æ§åˆ¶å°æ ‡å‡†é”™è¯¯è¾“å‡ºå¥æŸ„ã€‚
 static HANDLE CONSOLE_STDERR = NULL;
 
-//Ô­±¾ÑÕÉ«¡£
+//åŸæœ¬é¢œè‰²ã€‚
 static WORD ORIGIN_COLORS = FOREGROUND_WHITE | BACKGROUND_BLACK;
 
-//»ñµÃµ±Ç°Êä³öÑÕÉ«×éºÏ¡£
+//è·å¾—å½“å‰è¾“å‡ºé¢œè‰²ç»„åˆã€‚
 static WORD __mirror_get_text_color(bool is_err)
 {
 	static CONSOLE_SCREEN_BUFFER_INFO info;
 	if (!GetConsoleScreenBufferInfo(is_err?CONSOLE_STDERR:CONSOLE_STDOUT, &info))
 	{
-		//´íÎóĞÅÏ¢¡£
+		//é”™è¯¯ä¿¡æ¯ã€‚
 		return FOREGROUND_WHITE | BACKGROUND_BLACK;
 	}
 	return info.wAttributes;
 }
 
-//¼ì²éÊä³ö¾ä±ú¡£
+//æ£€æŸ¥è¾“å‡ºå¥æŸ„ã€‚
 static void __mirror_check_out()
 {
 	if (CONSOLE_STDOUT == NULL)
@@ -38,14 +38,14 @@ static void __mirror_check_out()
 		CONSOLE_STDOUT = GetStdHandle(STD_OUTPUT_HANDLE);
 		if (CONSOLE_STDOUT == INVALID_HANDLE_VALUE)
 		{
-			//´íÎó²Ù×÷£¬ÕâÀïÏÈÖÃ¿Õ¡£
+			//é”™è¯¯æ“ä½œï¼Œè¿™é‡Œå…ˆç½®ç©ºã€‚
 			CONSOLE_STDOUT = NULL;
 			return;
 		}
 	}
 }
 
-//¼ì²é´íÎó¾ä±ú¡£
+//æ£€æŸ¥é”™è¯¯å¥æŸ„ã€‚
 static void __mirror_check_err()
 {
 	if (CONSOLE_STDERR == NULL)
@@ -53,60 +53,60 @@ static void __mirror_check_err()
 		CONSOLE_STDERR = GetStdHandle(STD_ERROR_HANDLE);
 		if (CONSOLE_STDERR == INVALID_HANDLE_VALUE)
 		{
-			//´íÎó²Ù×÷£¬ÕâÀïÏÈÖÃ¿Õ¡£
+			//é”™è¯¯æ“ä½œï¼Œè¿™é‡Œå…ˆç½®ç©ºã€‚
 			CONSOLE_STDERR = NULL;
 			return;
 		}
 	}
 }
 
-//±äÉ«¸ñÊ½»¯±ê×¼Êä³öÊµÏÖ¡£
+//å˜è‰²æ ¼å¼åŒ–æ ‡å‡†è¾“å‡ºå®ç°ã€‚
 extern void console_printf(unsigned short colors, const char* format, ...)
 {
 	va_list argv;
 
 	__mirror_check_out();
 
-	//±äµ½ĞÂÉ«¡£
+	//å˜åˆ°æ–°è‰²ã€‚
 	ORIGIN_COLORS = __mirror_get_text_color(false);
 	if (!SetConsoleTextAttribute(CONSOLE_STDOUT, colors))
 	{
-		//´íÎóĞÅÏ¢¡£
+		//é”™è¯¯ä¿¡æ¯ã€‚
 		return;
 	}
 
-	//Êä³ö¡£
+	//è¾“å‡ºã€‚
 	va_start(argv, format);
 	vprintf_s(format, argv);
 	va_end(argv);
 
-	//±ä»ØÔ­É«¡£
+	//å˜å›åŸè‰²ã€‚
 	if (!SetConsoleTextAttribute(CONSOLE_STDOUT, ORIGIN_COLORS))
 	{
-		//´íÎóĞÅÏ¢¡£
+		//é”™è¯¯ä¿¡æ¯ã€‚
 		return;
 	}
 }
 
-//±äÉ«×Ö·û´®Êä³öÊµÏÖ¡£
+//å˜è‰²å­—ç¬¦ä¸²è¾“å‡ºå®ç°ã€‚
 extern void console_puts(unsigned short colors, const char* str)
 {
 	__mirror_check_out();
 
-	//±äµ½ĞÂÉ«¡£
+	//å˜åˆ°æ–°è‰²ã€‚
 	ORIGIN_COLORS = __mirror_get_text_color(false);
 	if (!SetConsoleTextAttribute(CONSOLE_STDOUT, colors))
 	{
-		//´íÎóĞÅÏ¢¡£
+		//é”™è¯¯ä¿¡æ¯ã€‚
 		return;
 	}
 
 	puts(str);
 
-	//±ä»ØÔ­É«¡£
+	//å˜å›åŸè‰²ã€‚
 	if (!SetConsoleTextAttribute(CONSOLE_STDOUT, ORIGIN_COLORS))
 	{
-		//´íÎóĞÅÏ¢¡£
+		//é”™è¯¯ä¿¡æ¯ã€‚
 		return;
 	}
 }
