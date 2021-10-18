@@ -5,6 +5,8 @@
  * @time 2021-10-16
  */
 #include<windows.h>
+#include<stringapiset.h>
+#include<cstdlib>
 #include<cstdio>
 #include<cstdarg>
 #include"graphic/console_text.h"
@@ -16,7 +18,7 @@ static HANDLE CONSOLE_STDOUT = NULL;
 static HANDLE CONSOLE_STDERR = NULL;
 
 //原本颜色。
-static WORD ORIGIN_COLORS = FOREGROUND_WHITE | BACKGROUND_BLACK;
+static WORD ORIGIN_COLORS = FORE_WHITE | BACK_BLACK;
 
 //获得当前输出颜色组合。
 static WORD __mirror_get_text_color(bool is_err)
@@ -25,9 +27,22 @@ static WORD __mirror_get_text_color(bool is_err)
 	if (!GetConsoleScreenBufferInfo(is_err?CONSOLE_STDERR:CONSOLE_STDOUT, &info))
 	{
 		//错误信息。
-		return FOREGROUND_WHITE | BACKGROUND_BLACK;
+		return FORE_WHITE | BACK_BLACK;
 	}
 	return info.wAttributes;
+}
+
+//获得当前代码页。
+static UINT __mirror_get_code_page(bool is_input)
+{
+	if (is_input)
+	{
+		return GetConsoleCP();
+	}
+	else
+	{
+		return GetConsoleOutputCP();
+	}
 }
 
 //检查输出句柄。
@@ -60,10 +75,77 @@ static void __mirror_check_err()
 	}
 }
 
+//使用堆内存的代码页转换。使用了malloc()。
+static void __mirror_change_codepage(const char* str, char** aim, UINT str_code, UINT aim_code)
+{
+	wchar_t* wstr;
+	PCHAR result;
+	int length;
+
+	//同页不用转。
+	if (str_code == aim_code)
+	{
+		*aim = (char*)str;
+		return;
+	}
+	//源代码页转化为Unicode
+	length = MultiByteToWideChar(str_code, 0, str, -1, NULL, 0);
+	if (!length)
+	{
+		//错误代码。
+		*aim = NULL;
+		return;
+	}
+	wstr = new wchar_t[length];
+	if (!MultiByteToWideChar(str_code, 0, str, -1, wstr, length))
+	{
+		//错误代码。
+		delete[] wstr;
+		*aim = NULL;
+		return;
+	}
+
+	//Unicode转化其他代码页。
+	length = WideCharToMultiByte(aim_code, 0, wstr, -1, NULL, 0, NULL, NULL);
+	if (!length)
+	{
+		//错误代码。
+		delete[] wstr;
+		*aim = NULL;
+		return;
+	}
+
+	result = (PCHAR)malloc(length * sizeof(CHAR));
+	if (result == NULL)
+	{
+		//错误代码。
+		delete[] wstr;
+		*aim = NULL;
+		return;
+	}
+
+	if (!WideCharToMultiByte(aim_code, 0, wstr, -1, result, length, NULL, NULL))
+	{
+		//错误代码。
+		free(result);
+		delete[] wstr;
+		*aim = NULL;
+		return;
+	}
+	else
+	{
+		delete[] wstr;
+		*aim = result;
+		return;
+	}
+}
+
 //变色格式化标准输出实现。
 extern void console_printf(unsigned short colors, const char* format, ...)
 {
 	va_list argv;
+	PCHAR str;
+	UINT code_page;
 
 	__mirror_check_out();
 
@@ -75,9 +157,12 @@ extern void console_printf(unsigned short colors, const char* format, ...)
 		return;
 	}
 
+	code_page = __mirror_get_code_page(false);
+	__mirror_change_codepage(format, &str, CP_UTF8, code_page);
+
 	//输出。
 	va_start(argv, format);
-	vprintf_s(format, argv);
+	vprintf_s(str, argv);
 	va_end(argv);
 
 	//变回原色。
@@ -86,11 +171,15 @@ extern void console_printf(unsigned short colors, const char* format, ...)
 		//错误信息。
 		return;
 	}
+
+	free(str);
 }
 
 //变色字符串输出实现。
 extern void console_puts(unsigned short colors, const char* str)
 {
+	PCHAR output;
+	UINT code_page;
 	__mirror_check_out();
 
 	//变到新色。
@@ -101,7 +190,9 @@ extern void console_puts(unsigned short colors, const char* str)
 		return;
 	}
 
-	puts(str);
+	code_page = __mirror_get_code_page(false);
+	__mirror_change_codepage(str, &output, CP_UTF8, code_page);
+	puts(output);
 
 	//变回原色。
 	if (!SetConsoleTextAttribute(CONSOLE_STDOUT, ORIGIN_COLORS))
@@ -109,4 +200,5 @@ extern void console_puts(unsigned short colors, const char* str)
 		//错误信息。
 		return;
 	}
+	free(output);
 }
