@@ -12,7 +12,7 @@ int main()
     unsigned short index,subindex;
     for (index = 0; index < 16; index++)
     {
-        console_printf(index | BACKGROUND_GREEN, "A\nA\nA\n");
+        console_printf(index | BACK_GREEN, "A\nA\nA\n");
     }
     console_puts(0x51, "Test.\n");
     return 0;
