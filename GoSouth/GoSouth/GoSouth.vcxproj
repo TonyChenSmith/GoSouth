@@ -94,6 +94,11 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
+      <DisableLanguageExtensions>true</DisableLanguageExtensions>
+      <AssemblerOutput>All</AssemblerOutput>
+      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,6 +115,11 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
+      <DisableLanguageExtensions>true</DisableLanguageExtensions>
+      <AssemblerOutput>All</AssemblerOutput>
+      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,6 +136,11 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
+      <DisableLanguageExtensions>true</DisableLanguageExtensions>
+      <AssemblerOutput>All</AssemblerOutput>
+      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +157,11 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
+      <DisableLanguageExtensions>true</DisableLanguageExtensions>
+      <AssemblerOutput>All</AssemblerOutput>
+      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
