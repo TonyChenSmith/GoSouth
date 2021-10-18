@@ -1,6 +1,6 @@
 ﻿/*
  * 本文件为对控制台文本输出函数定义。
- * 
+ *
  * @author 海中垂钓
  * @time 2021-10-16
  */
@@ -112,11 +112,11 @@ extern "C" {
 //亮白
 #define BACK_BRIGHT_WHITE  0xF0
 
-// 以带颜色方式使用格式化标准输出。颜色在输出后不再维持。字符集为UTF-8，非程序内建的字符串。
-extern void console_printf(unsigned short colors, const char* format, ...);
+    // 以带颜色方式使用格式化标准输出。颜色在输出后不再维持。字符集为UTF-8，非程序内建的字符串。
+	extern void console_printf(unsigned short colors,const char* format,...);
 
-// 以带颜色方式使用字符串输出。颜色在输出后不再维持。字符集为UTF-8，非程序内建的字符串。
-extern void console_puts(unsigned short colors, const char* str);
+	// 以带颜色方式使用字符串输出。颜色在输出后不再维持。字符集为UTF-8，非程序内建的字符串。
+	extern void console_puts(unsigned short colors,const char* str);
 
 #ifdef __cplusplus
 }

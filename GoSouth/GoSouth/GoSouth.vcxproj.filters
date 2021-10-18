@@ -19,6 +19,12 @@
     <Filter Include="源文件\graphic">
       <UniqueIdentifier>{2eb31321-dbd7-4bb1-b67c-42858b5eeffd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\object">
+      <UniqueIdentifier>{2e77af0a-744e-460d-a520-2bca43ee6dc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\object">
+      <UniqueIdentifier>{d8ebc91e-3f1f-4973-9d5b-b3239f93679a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GoSouth.cpp">
@@ -27,10 +33,16 @@
     <ClCompile Include="graphic\console_text.cpp">
       <Filter>源文件\graphic</Filter>
     </ClCompile>
+    <ClCompile Include="object\buffmanger.cpp">
+      <Filter>源文件\object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\graphic\console_text.h">
       <Filter>头文件\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\object\buffmanger.h">
+      <Filter>头文件\object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

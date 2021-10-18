@@ -169,9 +169,11 @@
   <ItemGroup>
     <ClCompile Include="GoSouth.cpp" />
     <ClCompile Include="graphic\console_text.cpp" />
+    <ClCompile Include="object\buffmanger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\graphic\console_text.h" />
+    <ClInclude Include="include\object\buffmanger.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
